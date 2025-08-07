@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tree Maze Escape — Game</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <!-- Parallax background -->
+  <div class="parallax" id="parallax"></div>
+
+  <div class="container">
+    <div class="card" role="application" aria-label="Tree Maze Escape">
+      <div class="title">
+        <span class="ping" aria-hidden="true"></span>
+        TREE MAZE ESCAPE — Kids Edition
+      </div>
+
+      <!-- Scene -->
+      <div class="scene" id="scene"></div>
+
+      <!-- Progress -->
+      <div class="bar" aria-hidden="true"><i></i></div>
+
+      <!-- Controls & breadcrumb -->
+      <div class="row small">
+        <div class="muted">
+          Press <span class="key">1</span>/<span class="key">2</span>/<span class="key">3</span> ·
+          <span class="key">R</span> restart ·
+          <a href="/" class="linkish">Change character</a>
+        </div>
+        <div class="muted" id="crumbs" aria-live="polite"></div>
+      </div>
+
+      <!-- Banner -->
+      <div class="banner" id="banner" hidden>
+        <div class="msg" id="bannerMsg" role="status"></div>
+      </div>
+
+      <!-- Choices -->
+      <div id="options" class="options"></div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>

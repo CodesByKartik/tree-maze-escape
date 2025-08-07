@@ -1,0 +1,107 @@
+/* === Base layout === */
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:#e9f7ff;
+  background:
+    radial-gradient(1200px 600px at 15% 8%, #0c2633 0%, #081923 55%, transparent 60%),
+    radial-gradient(1000px 520px at 85% 92%, #0b2230 0%, transparent 60%),
+    linear-gradient(180deg, #07131b 0%, #041017 100%);
+  min-height:100vh;
+}
+
+.container{ 
+  position:relative; 
+  z-index:1; 
+  display:grid; 
+  place-items:center; 
+  min-height:100vh; 
+  padding:24px; 
+}
+
+.card{
+  width:min(860px, 94vw);
+  background: linear-gradient(180deg, rgba(13,33,45,.88), rgba(10,27,37,.88));
+  border:1px solid #1c394a;
+  border-radius:20px;
+  box-shadow: 0 20px 60px #0009, inset 0 1px 0 #ffffff10;
+  padding:24px 22px 18px;
+}
+
+/* === Title === */
+.title{
+  font-size:1.2rem;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:16px;
+}
+.ping{
+  display:inline-block;
+  width:8px; height:8px; background:#25c46a; border-radius:50%;
+  box-shadow:0 0 0 rgba(37,196,106,.5); animation: ping 1.5s infinite;
+}
+@keyframes ping{
+  0%{ box-shadow:0 0 0 0 rgba(37,196,106,.5) }
+  70%{ box-shadow:0 0 0 8px rgba(37,196,106,0) }
+  100%{ box-shadow:0 0 0 0 rgba(37,196,106,0) }
+}
+
+/* === Character selection (used on / only) === */
+.char-select h2{ font-size:1.3rem; margin:0 0 12px; }
+.char-grid{
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:12px;
+}
+.char{
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px; padding:14px 8px;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  font-size:.95rem; font-weight:500; color:#e9f7ff; cursor:pointer; transition: all .2s ease;
+}
+.char img{ width:52px; height:52px; object-fit:contain; }
+.char:hover{ background:rgba(255,255,255,0.12); transform:translateY(-2px); }
+
+/* === Scene + Options (used on /play) === */
+.scene{ font-size:1.08rem; line-height:1.5; margin:14px 0 8px; min-height:120px; }
+.options{ display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+
+/* Choice buttons */
+.btn{
+  display:flex; align-items:center; gap:10px;
+  background:#0f2230; border:1px solid #1c3a4b; padding:12px 14px; border-radius:12px;
+  color:#e9f7ff; font-size:16px; cursor:pointer; position:relative; overflow:hidden;
+  transition: transform .12s ease, border-color .2s ease, background .25s ease;
+}
+.btn:hover{ transform: translateY(-1px); border-color:#2a5a72; }
+.num{ background:#123544; padding:4px 8px; border-radius:8px; font-weight:700; }
+
+/* Progress bar */
+.bar{ height:4px; background:#0c1d28; border-radius:999px; overflow:hidden; margin:12px 0; border:1px solid #173244; }
+.bar i{ height:100%; width:0; background: linear-gradient(90deg,#c7f4ff,#80dfff,#46bada); transition: width 1.2s ease; }
+
+/* Controls + crumbs */
+.row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; }
+.muted{ color:#9cb3bf; font-size:.85rem; }
+.key{ display:inline-block; padding:2px 6px; background:rgba(255,255,255,0.06); border-radius:4px; font-size:.8rem; }
+.linkish{ color:#5cd4ff; text-decoration:underline; }
+
+/* Banner below story (no overlap) */
+.banner{
+  position: static; margin: 12px auto 0; max-width: 560px; padding: 10px;
+  border-radius: 12px; text-align: center;
+}
+.banner .msg{
+  padding: 10px 14px; border-radius: 12px; font-weight: 800; letter-spacing: .3px; box-shadow: 0 8px 24px #0006;
+}
+.banner.win .msg{ color:#d9ffe9; background:#0a2f1a; border:2px solid #25c46a; }
+.banner.lose .msg{ color:#ffd9cf; background:#3a1714; border:2px solid #ff7a66; }
+
+/* Emphasis helpers */
+.em{ color:#5cd4ff; font-weight:700; }
+.warn{ color:#ff7a66; font-weight:700; }
+
+/* Background stars */
+.parallax{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+.dot{ position:absolute; width:2px; height:2px; background:#bfeaff1f; border-radius:50%; animation: drift linear forwards; filter: blur(.2px); }
+@keyframes drift{ from{ transform: translateY(-10vh) } to{ transform: translateY(110vh) translateX(var(--dx)); opacity:0 } }

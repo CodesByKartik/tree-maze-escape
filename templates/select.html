@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Select Your Explorer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="title">
+        <span class="ping"></span>
+        TREE MAZE ESCAPE — Choose Your Character
+      </div>
+
+      <div class="char-select">
+        <h2>Pick one to start</h2>
+        <div class="char-grid">
+          <button class="char" data-id="boy">
+            <img src="{{ url_for('static', filename='img/boy.svg') }}" alt="Boy Explorer">
+            <span>Boy Explorer</span>
+          </button>
+          <button class="char" data-id="girl">
+            <img src="{{ url_for('static', filename='img/girl.svg') }}" alt="Girl Explorer">
+            <span>Girl Explorer</span>
+          </button>
+          <button class="char" data-id="fox">
+            <img src="{{ url_for('static', filename='img/fox.svg') }}" alt="Fox">
+            <span>Fox</span>
+          </button>
+          <button class="char" data-id="dragon">
+            <img src="{{ url_for('static', filename='img/dragon.svg') }}" alt="Baby Dragon">
+            <span>Baby Dragon</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="muted" style="margin-top:10px;">
+        Tip: You can change later from the browser’s storage (or we can add a reset button on /play).
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Save choice to localStorage and go to /play
+    document.querySelectorAll(".char").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.id;
+        localStorage.setItem("maze_character", id);
+        window.location.href = "/play";
+      });
+    });
+  </script>
+</body>
+</html>
