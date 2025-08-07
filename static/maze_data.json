@@ -1,0 +1,157 @@
+{
+  "start": {
+    "text": "🏃‍♂️ Bus Stop gang is running through the college corridor! They have 10 minutes to submit the project to Bhumika Ma’am!",
+    "options": [
+      "Find Jaremon near printer",
+      "Check canteen where Andya might be hiding"
+    ],
+    "choices": [
+      "jaremon_node",
+      "andya_node"
+    ]
+  },
+  "jaremon_node": {
+    "text": "🧠 Jaremon: 'Bro, I printed the report but page numbers are... Sanskrit numerals!'",
+    "options": [
+      "Reprint quickly",
+      "Ignore and find Tukkya"
+    ],
+    "choices": [
+      "fix_pages",
+      "tukkya_node"
+    ]
+  },
+  "fix_pages": {
+    "text": "You reprinted, but forgot the last page. Now Jaremon is taping pages with Feviquick! 🤦‍♂️",
+    "options": [
+      "Run to Kissu for code check",
+      "Ask Tukkya to distract Bhumika Ma'am"
+    ],
+    "choices": [
+      "kissu_node",
+      "tukkya_node"
+    ]
+  },
+  "andya_node": {
+    "text": "🍜 Andya: 'Bhai chill kar... ek chai ek samosa toh banta hai viva se pehle!'",
+    "options": [
+      "No time! Rush to Niggasaurus!",
+      "Okay bas 1 plate..."
+    ],
+    "choices": [
+      "niggasaurus_node",
+      "chai_trap"
+    ]
+  },
+  "chai_trap": {
+    "text": "Samosa spicy tha, Andya hiccuped loudly near staffroom. Bhumika Ma'am noticed! 😬",
+    "terminal": "lose",
+    "options": [],
+    "choices": []
+  },
+  "tukkya_node": {
+    "text": "🎭 Tukkya: 'Bro I’m ready with mimicry! Should I act like principal or peon?'",
+    "options": [
+      "Make her laugh softly",
+      "Say NO and find Kissu"
+    ],
+    "choices": [
+      "laugh_divert",
+      "kissu_node"
+    ]
+  },
+  "laugh_divert": {
+    "text": "Tukkya tried to mimic Ma’am accidentally 😶. Crowd laughed... Ma’am smiled awkwardly.",
+    "options": [
+      "Send final PDF to Kissu",
+      "Rush to Niggasaurus"
+    ],
+    "choices": [
+      "kissu_node",
+      "niggasaurus_node"
+    ]
+  },
+  "niggasaurus_node": {
+    "text": "🎨 Niggasaurus: 'This design is SO dry. Where are the GIFs? Where’s Comic Sans?!'",
+    "options": [
+      "Change font to Comic Sans",
+      "Ignore and find Kissu"
+    ],
+    "choices": [
+      "comic_font",
+      "kissu_node"
+    ]
+  },
+  "comic_font": {
+    "text": "Now it’s Comic Sans everywhere. Niggasaurus: 'Perfect. Now it screams PASSION!' 🔥",
+    "options": [
+      "Send to Kissu",
+      "Show to Andya"
+    ],
+    "choices": [
+      "kissu_node",
+      "chai_trap"
+    ]
+  },
+  "kissu_node": {
+    "text": "💻 Kissu: 'Code chalega… par docx ka naam 'finalFINALv3_NEWREAL_FINAL.docx' kyun hai?'",
+    "options": [
+      "Rename properly",
+      "Just send and pretend"
+    ],
+    "choices": [
+      "rename_success",
+      "pretend"
+    ]
+  },
+  "rename_success": {
+    "text": "Now the file is 'Project_MCC_Submission.pdf'. Kissu is finally impressed. ✅",
+    "options": [
+      "Rush to Ma’am’s cabin!",
+      "Check again with Jaremon"
+    ],
+    "choices": [
+      "viva_room",
+      "jaremon_node"
+    ]
+  },
+  "pretend": {
+    "text": "Kissu shrugged and sent the file anyway. Confidence level = fake it till you make it. 😅",
+    "options": [
+      "Rush to viva room!",
+      "Ask Andya for good luck samosa"
+    ],
+    "choices": [
+      "viva_room",
+      "chai_trap"
+    ]
+  },
+  "viva_room": {
+    "text": "📋 Bhumika Ma’am: 'Team, are you ready?' She smiles. The air is intense, but respectful.",
+    "options": [
+      "Take lead and explain",
+      "Say 'It was all teamwork, Ma’am!'"
+    ],
+    "choices": [
+      "exit",
+      "respect_team"
+    ]
+  },
+  "respect_team": {
+    "text": "Ma’am: 'Good. I appreciate honest effort. But I’ll ask each of you 1 question!' 😬",
+    "options": [
+      "Smile and accept",
+      "Panic and look at Tukkya"
+    ],
+    "choices": [
+      "exit",
+      "chai_trap"
+    ]
+  },
+  "exit": {
+    "text": "🎉 Project submitted! Bhumika Ma’am: 'Well done, team. I'm proud of you.' The squad exits smiling and hungry. 🥳",
+    "terminal": "win",
+    "options": [],
+    "choices": []
+  }
+}
