@@ -1,41 +1,54 @@
-const storyBox = document.getElementById("storyBox");
-const choicesContainer = document.getElementById("choicesContainer");
+let mazeData = {};
+let currentNode = 'start';
 
-let currentNode = "start";
+document.addEventListener("DOMContentLoaded", () => {
+  fetch('/static/maze_data.json')
+    .then(res => res.json())
+    .then(data => {
+      mazeData = data;
+      displayNode(currentNode);
+    });
+});
 
-fetch("/static/maze_data.json")
-  .then((res) => res.json())
-  .then((data) => {
-    window.mazeData = data;
-    showNode(currentNode);
-  });
+function displayNode(key) {
+  const node = mazeData[key];
+  currentNode = key;
 
-function showNode(node) {
-  const data = window.mazeData[node];
-  currentNode = node;
-  storyBox.innerText = data.text;
+  const chatBox = document.getElementById("chat");
+  const choicesBox = document.getElementById("choices");
 
-  choicesContainer.innerHTML = "";
+  // Create chat bubble
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble " + getSpeakerClass(node.text);
+  bubble.textContent = node.text;
+  chatBox.appendChild(bubble);
+  chatBox.scrollTop = chatBox.scrollHeight;
 
-  if (data.terminal) {
-    const msg = data.terminal === "win" ? "🎉 You won!" : "💀 Game Over!";
-    const endBtn = document.createElement("button");
-    endBtn.innerText = msg;
-    endBtn.className = "choice-btn";
-    endBtn.onclick = restartGame;
-    choicesContainer.appendChild(endBtn);
+  // Clear choices
+  choicesBox.innerHTML = "";
+
+  // Terminal case
+  if (node.terminal) {
+    const endMsg = document.createElement("div");
+    endMsg.className = "chat-bubble mam";
+    endMsg.textContent = node.terminal === "win" ? "🎉 Project Submitted!" : "💀 Attendance gaya bro!";
+    chatBox.appendChild(endMsg);
     return;
   }
 
-  data.options.forEach((option, i) => {
+  // Show options
+  node.options.forEach((optionText, idx) => {
     const btn = document.createElement("button");
-    btn.className = "choice-btn";
-    btn.innerText = option;
-    btn.onclick = () => showNode(data.choices[i]);
-    choicesContainer.appendChild(btn);
+    btn.textContent = optionText;
+    btn.onclick = () => {
+      displayNode(node.choices[idx]);
+    };
+    choicesBox.appendChild(btn);
   });
 }
 
-function restartGame() {
-  showNode("start");
+function getSpeakerClass(text) {
+  if (text.startsWith("Kartik")) return "kartik";
+  if (text.startsWith("Bhumika")) return "mam";
+  return "friend";
 }
